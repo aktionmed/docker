@@ -3,7 +3,9 @@ FROM alpine:3.4
 RUN apk add --no-cache \
 		ca-certificates \
 		curl \
-		openssl
+		openssl \
+		openssh-client \
+		bash
 
 ENV DOCKER_BUCKET get.docker.com
 ENV DOCKER_VERSION 1.12.1
@@ -21,4 +23,4 @@ RUN set -x \
 COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["sh"]
+CMD ["bash"]
